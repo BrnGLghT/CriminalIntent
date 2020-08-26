@@ -36,6 +36,7 @@
         android:layout_height="wrap_content"
         android:text="Police"
         app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="gone"
         app:layout_constraintStart_toEndOf="@+id/crime_title"
         app:layout_constraintTop_toTopOf="@+id/crime_title" />
 

@@ -45,7 +45,7 @@ public class CrimeListFragment extends Fragment {
 
     private class CrimeHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        private Button mCallPoliceButton;
+        public Button mCallPoliceButton;
         private TextView mTitleTextView;
         private TextView mDateTextView;
         private Crime mCrime;
@@ -115,6 +115,8 @@ public class CrimeListFragment extends Fragment {
         public CrimeHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
             View v;
+
+            //TODO Add visibility to call police button, ask Roman bout dis. Idk why its doesnt work.
 
             switch (viewType) {
                 case TYPE_ITEM0:
