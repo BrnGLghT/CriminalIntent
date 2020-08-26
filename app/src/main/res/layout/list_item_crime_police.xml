@@ -12,7 +12,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
         android:text="Crime Title"
         app:layout_constraintBottom_toTopOf="@+id/crime_date"
         app:layout_constraintEnd_toStartOf="@+id/call_police_button"
