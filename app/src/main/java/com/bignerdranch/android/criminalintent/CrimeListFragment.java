@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import com.bignerdranch.android.criminalintent.Crime;
 
 import java.util.List;
 
@@ -45,7 +46,7 @@ public class CrimeListFragment extends Fragment {
 
     private class CrimeHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        public Button mCallPoliceButton;
+        private Button mCallPoliceButton;
         private TextView mTitleTextView;
         private TextView mDateTextView;
         private Crime mCrime;
@@ -64,7 +65,6 @@ public class CrimeListFragment extends Fragment {
             mCallPoliceButton = itemView.findViewById(R.id.call_police_button);
             mTitleTextView = (TextView) itemView.findViewById(R.id.crime_title);
             mDateTextView = (TextView) itemView.findViewById(R.id.crime_date);
-
             itemView.setOnClickListener(this);
 
             if (mCallPoliceButton != null) {
@@ -116,20 +116,25 @@ public class CrimeListFragment extends Fragment {
 
             View v;
 
-            //TODO Add visibility to call police button, ask Roman bout dis. Idk why its doesnt work.
+            v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_crime_police,
+                            parent, false);
 
-            switch (viewType) {
-                case TYPE_ITEM0:
-                    v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_crime_police,
-                            parent, false);
-                    break;
-                case TYPE_ITEM1:
-                    v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_crime,
-                            parent, false);
-                default:
-                    v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_crime,
-                            parent, false);
-            }
+
+
+            //TODO Add visibility to call police button, ask Roman bout dis. Idk why its doesn't work.
+
+//            switch (viewType) {
+//                case TYPE_ITEM0:
+//                    v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_crime_police,
+//                            parent, false);
+//                    break;
+//                case TYPE_ITEM1:
+//                    v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_crime,
+//                            parent, false);
+//                default:
+//                    v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_crime,
+//                            parent, false);
+//            }
             return new CrimeHolder(v);
 
 //            LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
