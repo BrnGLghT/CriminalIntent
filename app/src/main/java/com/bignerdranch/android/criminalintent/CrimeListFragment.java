@@ -84,6 +84,8 @@ public class CrimeListFragment extends Fragment {
             mCrime = crime;
             mTitleTextView.setText(mCrime.getTitle());
             mDateTextView.setText(mCrime.getDate().toString());
+            if (crime.isRequiresPolice()) mCallPoliceButton.setVisibility(View.VISIBLE);
+            else mCallPoliceButton.setVisibility(View.GONE);
         }
 
         @Override
