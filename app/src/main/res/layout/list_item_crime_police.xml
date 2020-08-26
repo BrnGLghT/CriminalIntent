@@ -1,31 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout2"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="8dp">
+    android:layout_height="wrap_content">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_weight="1">
+
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/crime_title"
-        android:text="Crime Title"/>
-    <TextView
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:text="Crime Title"
+        app:layout_constraintBottom_toTopOf="@+id/crime_date"
+        app:layout_constraintEnd_toStartOf="@+id/call_police_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
         android:id="@+id/crime_date"
-        android:text="Crime Date"/>
-    </LinearLayout>
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Crime Date"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/call_police_button"
+        app:layout_constraintStart_toStartOf="@+id/crime_title"
+        app:layout_constraintTop_toBottomOf="@+id/crime_title" />
+
 
     <Button
         android:id="@+id/call_police_button"
-        android:layout_width="100dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Police"/>
+        android:text="Police"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/crime_title"
+        app:layout_constraintTop_toTopOf="@+id/crime_title" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
