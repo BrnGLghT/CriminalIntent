@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -14,8 +14,11 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import com.bignerdranch.android.criminalintent.Crime;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class CrimeListFragment extends Fragment {
@@ -50,6 +53,7 @@ public class CrimeListFragment extends Fragment {
         private TextView mTitleTextView;
         private TextView mDateTextView;
         private Crime mCrime;
+        private ImageView mSolvedImageView;
 
 //        public CrimeHolder(LayoutInflater inflater, ViewGroup parent) { //Конструктор по книге
 //            super(inflater.inflate(R.layout.list_item_crime, parent, false));
@@ -67,6 +71,8 @@ public class CrimeListFragment extends Fragment {
             mDateTextView = (TextView) itemView.findViewById(R.id.crime_date);
             itemView.setOnClickListener(this);
 
+            mSolvedImageView = (ImageView) itemView.findViewById(R.id.crime_solved);
+
             if (mCallPoliceButton != null) {
                 mCallPoliceButton.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -80,12 +86,14 @@ public class CrimeListFragment extends Fragment {
 
         }
 
+
         public void bind(Crime crime) {
             mCrime = crime;
             mTitleTextView.setText(mCrime.getTitle());
-            mDateTextView.setText(mCrime.getDate().toString());
-            if (crime.isRequiresPolice()) mCallPoliceButton.setVisibility(View.VISIBLE);
-            else mCallPoliceButton.setVisibility(View.GONE);
+//            mDateTextView.setText(mCrime.getDate().toString();  Стандартное указание времени
+            mDateTextView.setText(mCrime.getFormatDate());
+            mSolvedImageView.setVisibility(crime.isSolved() ? View.VISIBLE :
+                    View.GONE);
         }
 
         @Override
@@ -118,12 +126,9 @@ public class CrimeListFragment extends Fragment {
 
             View v;
 
-            v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_crime_police,
+            v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_crime,
                             parent, false);
 
-
-
-            //TODO Add visibility to call police button, ask Roman bout dis. Idk why its doesn't work.
 
 //            switch (viewType) {
 //                case TYPE_ITEM0:
